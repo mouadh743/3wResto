@@ -3,18 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Customer ;
+use App\Meal ;
 class AppController extends Controller
 {
     public function welcome()
     {
+        $meals = Meal::all();
         return view('welcome',[
             'msg'=>'welcom to 3wacademy',
+            'meals' =>$meals,
         ]);
     }
     public function about()
     {
-        $customers = Customer::all();
+        
         return view('about',[
             'customers' => $customers,
         ]);
