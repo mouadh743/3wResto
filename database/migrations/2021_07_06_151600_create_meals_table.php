@@ -15,9 +15,9 @@ class CreateMealsTable extends Migration
     {
         Schema::create('meals', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name',30);
-            $table->string('photo',30);
-            $table->string('description',250);
+            $table->string('name');
+            $table->string('photo');
+            $table->string('description');
             $table->tinyInteger('quantity_in_stock');
             $table->double('price_buy', 8, 2);
             $table->double('price_sale', 8, 2);
