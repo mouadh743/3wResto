@@ -6,19 +6,33 @@
             </div>
             
         </div>
-        <table class="table table-bordered">
-                <thead>
-
-                </thead>
-                <tbody>
-                    @foreach ($meals as $item)
-                    <tr>
-                        <td>{{$item->name}}</td>
-                        <td>{{$item->description}}</td>
-                        <td>{{$item->price_sale}}</td>
-                        <td><img src="{{$item->photo}}" alt=""></td>
-                    </tr>
-                    @endforeach    
-                </tbody>
-            </table>
+        
+            
+            <div class="album py-5 bg-light">
+                <div class="container">
+                    
+                  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                      @foreach ($meals as $item)
+                    <div class="col">
+                      <div class="card shadow-sm">
+                        <img src="{{$item->photo}}" alt="">
+            
+                        <div class="card-body">
+                          <p class="card-text">{{$item->description}}</p>
+                          <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                              <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                            </div>
+                            <small class="text-muted">{{$item->price_sale}}</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                     @endforeach 
+                  </div>
+                 
+                </div>
+              </div>
+      
 @endsection
