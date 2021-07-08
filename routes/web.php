@@ -17,3 +17,4 @@ Route::get('/about','AppController@about');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('booking','BookingController');
