@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
 use App\Booking;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 class BookingController extends Controller
 {
     /**
@@ -14,7 +15,7 @@ class BookingController extends Controller
     public function index()
     {
         return view('booking.index',[
-            'bookings'=>Booking::all(),
+            'bookings'=>Auth::user()->bookings()->get(),
         ]);
     }
 
