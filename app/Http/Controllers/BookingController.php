@@ -72,7 +72,10 @@ class BookingController extends Controller
      */
     public function show($id)
     {
-        //
+        $booking = Booking::find($id);
+        return view('booking.show',[
+            'booking'=>  $booking,
+        ]);
     }
 
     /**
@@ -106,6 +109,7 @@ class BookingController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        return redirect()->route('booking.index');
     }
 }
