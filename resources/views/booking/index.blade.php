@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+@if (session('bookingNotification'))
+    <div class="alert alert-success alert-dismissible fade show">
+        {{session('bookingNotification')}}
+
+    </div>
+@endif
 <a type="button" class="btn btn-primary" href="{{ route('booking.create') }}">Get booking</a>
 <div class="row">
 <div class="col">

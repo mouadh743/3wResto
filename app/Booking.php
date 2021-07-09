@@ -11,7 +11,7 @@ class Booking extends Model
     protected $dates = ['booking_date'];
 
     protected $guarded =[];
-   // protected $table = 'bookings';
+   
     public function user()
     {
         return $this->belongsTo('App\User');    

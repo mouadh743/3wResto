@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Booking;
+use App\Mail\BookingMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class BookingController extends Controller
 {
@@ -31,6 +33,8 @@ class BookingController extends Controller
      */
     public function create()
     {
+        
+       
         return view('booking.create',[]);
     }
 
@@ -59,10 +63,12 @@ class BookingController extends Controller
 
 
         $booking->created_at = now();
-
+        
 
         $booking->updated_at = now();
         $booking->save();
+
+        Mail::to(Auth::user()->email)->send(new BookingMail());
        return redirect()->route('booking.index');
     }
 
@@ -126,6 +132,6 @@ class BookingController extends Controller
     {
         $booking = Booking::find($id);
         $booking->delete();
-        return redirect()->route('booking.index');
+        return redirect()->route('booking.index')->with('bookingNotification','Booking deleted successfully !');
     }
 }
