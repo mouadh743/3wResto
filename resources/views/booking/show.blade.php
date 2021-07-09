@@ -16,8 +16,8 @@
               <td> {{ date('H:i', strtotime($booking->booking_time)) }}</td>
               <td> {{ $booking->seats_nbr }}</td>
               <td>
-                  <a href="" class="btn btn-outline-warning">Edit</a>
-                  <a href="" class="btn btn-outline-danger">Delete</a>
+                  <a href="{{route('booking.edit',$booking->id)}}" class="btn btn-outline-warning">Edit</a>
+                  <a href="{{route('booking.destroy',$booking->id)}}" class="btn btn-outline-danger">Delete</a>
 
               </td>
             </tr>
