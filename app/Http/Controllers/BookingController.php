@@ -13,6 +13,8 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     
     public function index()
     {
 
@@ -84,21 +86,34 @@ class BookingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Booking $booking)
     {
-        //
+        return view('booking.edit',[
+            'booking'=>  $booking,
+        ]);
+        
     }
 
     /**
      * Update the specified resource in storage.
-     *
+     * 
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, Booking $booking)
+    { $ValidatedDate = $request->validate([
+        'booking_date' => 'required|date',
+        'booking_time' => 'required',
+        'seats_nbr' => 'required|min:1|max:15',
+    ]);
+        $booking->update($ValidatedDate );
+
+        
+
+        return redirect()->route('booking.index',[
+            'booking'=>$booking,
+        ]);
     }
 
     /**
@@ -107,9 +122,9 @@ class BookingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Booking $booking )
     {
-
+        
         return redirect()->route('booking.index');
     }
 }
