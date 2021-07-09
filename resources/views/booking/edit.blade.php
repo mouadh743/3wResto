@@ -6,6 +6,7 @@
     <form action=" {{ route('booking.update',$booking->id) }} " method="post">
         @csrf
         @method('PATCH')
+        
         <div class="row">
             <div class="col">
                 <div class="form-group">

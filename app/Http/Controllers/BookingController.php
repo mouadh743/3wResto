@@ -14,7 +14,7 @@ class BookingController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     
+
     public function index()
     {
 
@@ -122,9 +122,10 @@ class BookingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Booking $booking )
+    public function destroy($id)
     {
-        
+        $booking = Booking::find($id);
+        $booking->delete();
         return redirect()->route('booking.index');
     }
 }

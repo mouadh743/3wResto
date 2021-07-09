@@ -2,6 +2,7 @@
 
 @section('content')
     <table class="table table-hover">
+      
         <thead>
             <tr>
               <th scope="col">Booking date</th>
@@ -17,8 +18,14 @@
               <td> {{ $booking->seats_nbr }}</td>
               <td>
                   <a href="{{route('booking.edit',$booking->id)}}" class="btn btn-outline-warning">Edit</a>
-                  <a href="{{route('booking.destroy',$booking->id)}}" class="btn btn-outline-danger">Delete</a>
-
+                 
+                  <a href="{{ route('booking.destroy',$booking->id) }}"
+                  onclick="event.preventDefault();
+                  document.getElementById('delete').submit();" method="post" class="btn btn-outline-danger">Delete</a>
+                 <form id="delete" action="{{route('booking.destroy',$booking->id)}}" method="post" style="display: none;">
+                  @method('DELETE')
+                  @csrf
+              </form> 
               </td>
             </tr>
         </tbody>
