@@ -19,7 +19,14 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('booking','BookingController')->middleware('auth');
 
-Route::get('admin-dashboard',function ()
-{
-    return view('admin.dashboard');
-})->middleware('auth','admin');
+Route::group([
+    'middleware' => 'admin',
+    'prefix' => 'admin',
+    'namespace' => 'Admin',
+    'name' => 'admin.'
+], function () {
+    Route::get('dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
+    Route::resource('meals', 'MealController');
+});
