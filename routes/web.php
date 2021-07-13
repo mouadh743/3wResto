@@ -18,7 +18,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('booking','BookingController')->middleware('auth');
-Route::get('order/index', 'AppController@order');
+Route::get('order/{any}', 'AppController@order')->where('any','.*');
 Route::group([
     'middleware' => 'admin',
     'prefix' => 'admin',
