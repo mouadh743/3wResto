@@ -15,7 +15,7 @@
                         <a class="nav-link" href="{{ route('booking.index') }}">Booking</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('order/index') }}">Order</a>
+                        <a class="nav-link" href="{{ url('order/index') }}">Order <i class="fas fa-user"></i> </a>
                     </li>
                 </ul>
             @endauth
