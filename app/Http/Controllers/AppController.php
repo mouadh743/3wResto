@@ -14,6 +14,10 @@ class AppController extends Controller
             'meals' =>$meals,
         ]);
     }
+    public function order()
+    {
+        return view('order.index');
+    }
     public function about()
     {
         
